@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 export function shouldBehaveLikeThetanks(): void {
   it("should behave like thetanks", async function () {
-    // Mint new ships
+    // Mint new tanks
     await this.thetanks.connect(this.signers.admin).mintTank(this.signers.admin.address);
     await this.thetanks.connect(this.signers.admin).mintTank(this.signers.admin.address);
     await this.thetanks.connect(this.signers.admin).mintTank(this.signers.admin.address);
@@ -31,11 +31,11 @@ export function shouldBehaveLikeThetanks(): void {
     const bobToken1 = await this.thetanks.tokenOfOwnerByIndex(this.signers.bob.address, 1);
     expect(bobToken1).to.equal(5);
 
-    // Get ship codes
-    const shipCode1 = await this.thetanks._tokenToTankCode(1);
-    expect(shipCode1).to.equal("000");
+    // Get tank codes
+    const tankCode1 = await this.thetanks._tokenToTankCode(1);
+    expect(tankCode1).to.equal("000");
 
-    // Upgrade ship
+    // Upgrade tank
     await this.thetanks.connect(this.signers.admin).upgradeTank(1, "123");
     const upgradedTankCode1 = await this.thetanks._tokenToTankCode(1);
     expect(upgradedTankCode1).to.equal("123");
