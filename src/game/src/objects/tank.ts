@@ -54,38 +54,38 @@ export class Tank extends Phaser.GameObjects.Container {
     this.scene.add.existing(this)
 
     // boost particles
-    const tank = this
-    const particles = this.scene.add.particles('particleBlue')
-    this.emitter = particles.createEmitter({
-      speed: 100,
-      lifespan: {
-        onEmit: () => {
-          const speed = Math.sqrt(Math.pow(tank.velocity.x, 2) + Math.pow(tank.velocity.y, 2))
-          return Phaser.Math.Percent(speed, 0, 5) * 2000
-        },
-      },
-      alpha: {
-        onEmit: () => {
-          const speed = Math.sqrt(Math.pow(tank.velocity.x, 2) + Math.pow(tank.velocity.y, 2))
-          return Phaser.Math.Percent(speed, 0, 5)
-        },
-      },
-      angle: {
-        onEmit: () => {
-          var v = Phaser.Math.Between(-10, 10)
-          return Phaser.Math.RadToDeg(tank.rotation) - 180 + v
-        },
-      },
-      scale: { start: 0.6, end: 0 },
-      blendMode: 'ADD',
-    })
-    this.emitter.startFollow(this, 0, 0)
+    // const tank = this
+    // const particles = this.scene.add.particles('particleBlue')
+    // this.emitter = particles.createEmitter({
+    //   speed: 100,
+    //   lifespan: {
+    //     onEmit: () => {
+    //       const speed = Math.sqrt(Math.pow(tank.velocity.x, 2) + Math.pow(tank.velocity.y, 2))
+    //       return Phaser.Math.Percent(speed, 0, 5) * 2000
+    //     },
+    //   },
+    //   alpha: {
+    //     onEmit: () => {
+    //       const speed = Math.sqrt(Math.pow(tank.velocity.x, 2) + Math.pow(tank.velocity.y, 2))
+    //       return Phaser.Math.Percent(speed, 0, 5)
+    //     },
+    //   },
+    //   angle: {
+    //     onEmit: () => {
+    //       var v = Phaser.Math.Between(-10, 10)
+    //       return Phaser.Math.RadToDeg(tank.rotation) - 180 + v
+    //     },
+    //   },
+    //   scale: { start: 0.6, end: 0 },
+    //   blendMode: 'ADD',
+    // })
+    // this.emitter.startFollow(this, 0, 0)
   }
 
   private initTank(): void {
     // define tank properties
-    this.x = this.scene.sys.canvas.width / 2
-    this.y = this.scene.sys.canvas.height / 2
+    this.x = this.scene.sys.canvas.width / 4
+    this.y = this.scene.sys.canvas.height / 4
     this.velocity = new Phaser.Math.Vector2(0, 0)
   }
 
@@ -97,39 +97,45 @@ export class Tank extends Phaser.GameObjects.Container {
     this.applyForces()
     this.checkIfOffScreen()
     this.updateBullets()
-    this.emitter.startFollow(this, -70 * Math.sin(this.rotation), 70 * Math.cos(this.rotation))
+    // this.emitter.startFollow(this, -70 * Math.sin(this.rotation), 70 * Math.cos(this.rotation))
   }
 
   private applyEffects(time: number): void {
-    if (this.cursors.up.isDown || this.cursors.down.isDown) {
-      this.partBody.x = (time % 2) - 1
-      this.partBody.y = (time % 2) - 1
+    if (this.cursors.up.isDown || this.cursors.down.isDown || this.cursors.right.isDown || this.cursors.left.isDown) {
+      this.partChassisA.x = (time % 2) - 1
+      this.partChassisA.y = (time % 2) - 1
+      this.partChassisB.x = (time % 2) - 1
+      this.partChassisB.y = (time % 2) - 1
     }
 
     if (this.isShooting && this.partChassisB.y < 20) {
-      this.partChassisB.y += 2
+      this.partTurret.x -= 2
+      this.partTurret.y -= 2
     } else {
-      this.partChassisB.y = 0
-    }
-
-    if (this.cursors.right.isDown || this.cursors.left.isDown) {
-      if (this.cursors.right.isDown && this.partChassisA.angle > -6) this.partChassisA.angle -= 1
-      if (this.cursors.left.isDown && this.partChassisA.angle < 6) this.partChassisA.angle += 1
-    } else {
-      if (this.partChassisA.angle > -6 && this.partChassisA.angle < 0) this.partChassisA.angle += 1
-      if (this.partChassisA.angle < 6 && this.partChassisA.angle > 0) this.partChassisA.angle -= 1
+      this.partTurret.x = 0
+      this.partTurret.y = 0
     }
   }
 
   private handleInput(): void {
     if (this.cursors.up.isDown) {
-      this.boost()
+      let force = new Phaser.Math.Vector2(Math.cos((11 * Math.PI) / 6), Math.sin((11 * Math.PI) / 6))
+      force.scale(0.3)
+      this.velocity.add(force)
+    } else if (this.cursors.down.isDown) {
+      let force = new Phaser.Math.Vector2(Math.cos((5 * Math.PI) / 6), Math.sin((5 * Math.PI) / 6))
+      force.scale(0.3)
+      this.velocity.add(force)
     }
 
     if (this.cursors.right.isDown) {
-      this.rotation += 0.05
+      let force = new Phaser.Math.Vector2(Math.cos((1 * Math.PI) / 6), Math.sin((1 * Math.PI) / 6))
+      force.scale(0.3)
+      this.velocity.add(force)
     } else if (this.cursors.left.isDown) {
-      this.rotation -= 0.05
+      let force = new Phaser.Math.Vector2(Math.cos((7 * Math.PI) / 6), Math.sin((7 * Math.PI) / 6))
+      force.scale(0.3)
+      this.velocity.add(force)
     }
 
     if (this.shootKey.isDown && !this.isShooting) {
@@ -141,15 +147,6 @@ export class Tank extends Phaser.GameObjects.Container {
     if (this.shootKey.isUp) {
       this.isShooting = false
     }
-  }
-
-  private boost(): void {
-    // create the force in the correct direction
-    let force = new Phaser.Math.Vector2(Math.cos(this.rotation - Math.PI / 2), Math.sin(this.rotation - Math.PI / 2))
-
-    // reduce the force and apply it to the velocity
-    force.scale(0.3)
-    this.velocity.add(force)
   }
 
   private applyForces(): void {
@@ -183,17 +180,14 @@ export class Tank extends Phaser.GameObjects.Container {
         scene: this.scene,
         x: this.x,
         y: this.y,
-        rotation: this.rotation,
+        rotation: this.rotation + 2 * Math.PI / 3,
         texture: 'bullet',
       }),
     )
   }
 
   private recoil(): void {
-    // create the force in the correct direction
-    let force = new Phaser.Math.Vector2(-Math.cos(this.rotation - Math.PI / 2), -Math.sin(this.rotation - Math.PI / 2))
-
-    // reduce the force and apply it to the velocity
+    let force = new Phaser.Math.Vector2(Math.cos(5 *  Math.PI / 6), Math.sin(5 * Math.PI / 2))
     force.scale(0.2)
     this.velocity.add(force)
   }

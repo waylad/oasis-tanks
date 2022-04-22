@@ -8,7 +8,7 @@ Thetanks is a tank fighting game with upgradable NFTs. Mint a basic tank to star
 First, click "connect your wallet". Metamask opens to authorize the connection. If you are not already connected to the Theta Testnet, Metamask will offer you to do so.
 ![](https://thetanks.app/assets/screenshots/connect-wallet-scene.png)
 
-The game will then fetch all your tank NFTs from the smart contract. If you do not yet have a Thetank NFT, click "Mint New Tank" and Metamask will open to trigger the mint. You will receive a basic tank with entry-level weapons, wings, engine, and cabin. The tank will appear in your list of tanks (if not refresh the page). Select that tank to access the game.
+The game will then fetch all your tank NFTs from the smart contract. If you do not yet have a Thetank NFT, click "Mint New Tank" and Metamask will open to trigger the mint. You will receive a basic tank with entry-level turret, body and chassis. The tank will appear in your list of tanks (if not refresh the page). Select that tank to access the game.
 ![](https://thetanks.app/assets/screenshots/select-tank-scene.png)
 
 The game is built with PhaserJS, a 2D Javascript game engine that allows us to pilot our tank and fire at enemies. Use the directional arrows to move the tank and press the space bar to fire. Try to kill the enemy tanks, but be careful not to get hit. When the enemy is destroyed, it drops some loot. Move your tank over it to get it into your inventory.

@@ -27,6 +27,6 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
       debug: false
     }
   },
-  backgroundColor: '#010022',
+  backgroundColor: '#FFFFFF',
   render: { pixelArt: false, antialias: true }
 };

@@ -8,12 +8,12 @@ export class PreloaderScene extends Phaser.Scene {
   preload(): void {
     var progressBar = this.add.graphics()
     var progressBox = this.add.graphics()
-    progressBox.fillStyle(0x222222, 0.8)
+    progressBox.fillStyle(0x3b3a4b, 0.8)
     progressBox.fillRect(this.sys.canvas.width / 2 - 160, this.sys.canvas.height / 2 - 25, 320, 50)
 
     var percentText = this.make.text({
       x: this.sys.canvas.width / 2,
-      y: this.sys.canvas.height / 2 ,
+      y: this.sys.canvas.height / 2,
       text: '0%',
       style: {
         font: '18px monospace',
@@ -40,6 +40,7 @@ export class PreloaderScene extends Phaser.Scene {
 
     this.load.on('fileprogress', (file: any) => {
       assetText.setText('Loading asset: ' + file.key)
+      assetText.setColor("0x3b3a4b")
     })
 
     this.load.on('complete', () => {
@@ -50,6 +51,9 @@ export class PreloaderScene extends Phaser.Scene {
       this.scene.start('ConnectWallet')
     })
 
+    // for (let i = 0; i < 1000; i++) {
+    //   this.load.image('background' + i, './assets/bg.png')
+    // }
     this.load.image('background', './assets/bg.png')
     this.load.image('titleLoading', './assets/title-loading.png')
     this.load.image('titleHome', './assets/title-home.png')
@@ -57,7 +61,7 @@ export class PreloaderScene extends Phaser.Scene {
     this.load.image('buttonLoading', './assets/button-loading.png')
     this.load.image('titleGameOver', './assets/title-game-over.png')
     this.load.image('buttonRetry', './assets/button-retry.png')
-    this.load.image('bullet', './assets/bullets/bullet3.png')
+    this.load.image('bullet', './assets/bullets/bullet6.png')
     this.load.image('particleBlue', './assets/particles/blue.png')
     this.load.image('particleRed', './assets/particles/red.png')
     this.load.spritesheet('explosion', './assets/explosion.png', { frameWidth: 64, frameHeight: 64, endFrame: 23 })
@@ -71,6 +75,10 @@ export class PreloaderScene extends Phaser.Scene {
     this.load.image('titleSelect', './assets/title-select.png')
     this.load.image('buttonMint', './assets/button-mint.png')
 
+    this.load.image('enemy0', './assets/enemies/0.png')
+    this.load.image('enemy1', './assets/enemies/1.png')
+    this.load.image('enemy2', './assets/enemies/2.png')
+    this.load.image('enemy3', './assets/enemies/3.png')
     this.load.image('partTurret0', './assets/parts/turret0.png')
     this.load.image('partTurret1', './assets/parts/turret1.png')
     this.load.image('partTurret2', './assets/parts/turret2.png')
@@ -133,9 +141,7 @@ export class PreloaderScene extends Phaser.Scene {
     this.load.image('itemChassis8', './assets/items/chassis8.png')
   }
 
-  create(): void {
-  }
+  create(): void {}
 
-  update(): void {
-  }
+  update(): void {}
 }

@@ -54,7 +54,7 @@ export class SelectTank extends Phaser.Scene {
         ])
         container.setSize(bigCell.width, bigCell.height)
         container.setInteractive({ cursor: 'pointer' })
-        container.on('pointerover', () => bigCell.setTint(0x9887ff))
+        container.on('pointerover', () => bigCell.setTint(0x87C5FF))
         container.on('pointerout', () => bigCell.clearTint())
         container.on('pointerdown', () => {
           CONST.CURRENT_TANK = tank
@@ -67,7 +67,7 @@ export class SelectTank extends Phaser.Scene {
     this.buttonMint = this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 2 + 200, 'buttonMint')
     this.buttonMint.setSize(this.buttonMint.width, this.buttonMint.height)
     this.buttonMint.setInteractive({ cursor: 'pointer' })
-    this.buttonMint.on('pointerover', () => this.buttonMint.setTint(0x9887ff))
+    this.buttonMint.on('pointerover', () => this.buttonMint.setTint(0x87C5FF))
     this.buttonMint.on('pointerout', () => this.buttonMint.clearTint())
     this.buttonMint.on('pointerdown', async () => {
       this.showLoading = true
@@ -78,7 +78,7 @@ export class SelectTank extends Phaser.Scene {
 
     let buttonBack = this.add.image(100, this.sys.canvas.height - 100, 'buttonBack')
     buttonBack.setInteractive({ cursor: 'pointer' })
-    buttonBack.on('pointerover', () => buttonBack.setTint(0x9887ff))
+    buttonBack.on('pointerover', () => buttonBack.setTint(0x87C5FF))
     buttonBack.on('pointerout', () => buttonBack.clearTint())
     buttonBack.on('pointerdown', () => this.scene.start('ConnectWallet'))
   }

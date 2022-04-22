@@ -11,7 +11,7 @@ export class Enemy extends Phaser.GameObjects.Container {
   private shootKey: Phaser.Input.Keyboard.Key
   private isShooting: boolean
   private emitter: Phaser.GameObjects.Particles.ParticleEmitter
-  private shootCount: number
+  private counter: number
   private particles: Phaser.GameObjects.Particles.ParticleEmitterManager
 
   public getBullets(): Bullet[] {
@@ -28,7 +28,7 @@ export class Enemy extends Phaser.GameObjects.Container {
     // variables
     this.bullets = []
     this.isShooting = false
-    this.shootCount = 0
+    this.counter = 0
 
     // init enemy
     this.initEnemy(aParams.x, aParams.y)
@@ -40,41 +40,39 @@ export class Enemy extends Phaser.GameObjects.Container {
     this.body.setSize(CONST.TANK_SIZE * 2, CONST.TANK_SIZE * 2)
     this.body.setOffset(-CONST.TANK_SIZE, -CONST.TANK_SIZE)
 
-    const partTurret = new Phaser.GameObjects.Image(this.scene, 0, 0, `partTurret${aParams.tankCode[0]}`)
-    const partBody = new Phaser.GameObjects.Image(this.scene, 0, 0, `partBody${aParams.tankCode[1]}`)
-    const partChassisA = new Phaser.GameObjects.Image(this.scene, 0, 0, `partChassisA${aParams.tankCode[2]}`)
-    const partChassisB = new Phaser.GameObjects.Image(this.scene, 0, 0, `partChassisB${aParams.tankCode[2]}`)
-    this.add([partChassisB, partBody, partChassisA, partTurret])
+    console.log(`enemy${aParams.tankCode}`)
+    const enemyImage = new Phaser.GameObjects.Image(this.scene, 0, 0, `enemy${aParams.tankCode}`)
+    this.add(enemyImage)
 
     this.scene.add.existing(this)
 
     // boost particles
-    const enemy = this
-    this.particles = this.scene.add.particles('particleRed')
-    this.emitter = this.particles.createEmitter({
-      speed: 100,
-      lifespan: {
-        onEmit: () => {
-          const speed = Math.sqrt(Math.pow(enemy.velocity.x, 2) + Math.pow(enemy.velocity.y, 2))
-          return Phaser.Math.Percent(speed, 0, 5) * 2000
-        },
-      },
-      alpha: {
-        onEmit: () => {
-          const speed = Math.sqrt(Math.pow(enemy.velocity.x, 2) + Math.pow(enemy.velocity.y, 2))
-          return Phaser.Math.Percent(speed, 0, 5)
-        },
-      },
-      angle: {
-        onEmit: () => {
-          var v = Phaser.Math.Between(-10, 10)
-          return Phaser.Math.RadToDeg(enemy.rotation) - 180 + v
-        },
-      },
-      scale: { start: 0.6, end: 0 },
-      blendMode: 'ADD',
-    })
-    this.emitter.startFollow(this, 0, 0)
+    // const enemy = this
+    // this.particles = this.scene.add.particles('particleRed')
+    // this.emitter = this.particles.createEmitter({
+    //   speed: 100,
+    //   lifespan: {
+    //     onEmit: () => {
+    //       const speed = Math.sqrt(Math.pow(enemy.velocity.x, 2) + Math.pow(enemy.velocity.y, 2))
+    //       return Phaser.Math.Percent(speed, 0, 5) * 2000
+    //     },
+    //   },
+    //   alpha: {
+    //     onEmit: () => {
+    //       const speed = Math.sqrt(Math.pow(enemy.velocity.x, 2) + Math.pow(enemy.velocity.y, 2))
+    //       return Phaser.Math.Percent(speed, 0, 5)
+    //     },
+    //   },
+    //   angle: {
+    //     onEmit: () => {
+    //       var v = Phaser.Math.Between(-10, 10)
+    //       return Phaser.Math.RadToDeg(enemy.rotation) - 180 + v
+    //     },
+    //   },
+    //   scale: { start: 0.6, end: 0 },
+    //   blendMode: 'ADD',
+    // })
+    // this.emitter.startFollow(this, 0, 0)
   }
 
   private initEnemy(x: number, y: number): void {
@@ -85,66 +83,38 @@ export class Enemy extends Phaser.GameObjects.Container {
   }
 
   update(): void {
-    // if (this.active) {
-    //   this.handleInput()
-    // }
+    this.counter += 1
     this.boost()
-    this.rotation += 0.005
-    this.shootCount += 1
-    if(this.shootCount % 30 === 0) this.shoot()
+    if (this.counter % 30 === 0) this.shoot()
 
     this.applyForces()
     this.checkIfOffScreen()
     this.updateBullets()
-    this.emitter.startFollow(this, -70 * Math.sin(this.rotation), 70 * Math.cos(this.rotation))
+    // this.emitter.startFollow(this, -70 * Math.sin(this.rotation), 70 * Math.cos(this.rotation))
   }
 
   destroy(): void {
-    this.bullets.forEach(bullet => bullet.destroy())
-    this.particles.destroy()
+    this.bullets.forEach((bullet) => bullet.destroy())
+    // this.particles.destroy()
     super.destroy()
   }
 
-  private handleInput(): void {
-    if (this.cursors.up.isDown) {
-      this.boost()
-    }
-
-    if (this.cursors.right.isDown) {
-      this.rotation += 0.05
-    } else if (this.cursors.left.isDown) {
-      this.rotation -= 0.05
-    }
-
-    if (this.shootKey.isDown && !this.isShooting) {
-      this.shoot()
-      this.recoil()
-      this.isShooting = true
-    }
-
-    if (this.shootKey.isUp) {
-      this.isShooting = false
-    }
-  }
-
   private boost(): void {
-    // create the force in the correct direction
-    let force = new Phaser.Math.Vector2(Math.cos(this.rotation - Math.PI / 2), Math.sin(this.rotation - Math.PI / 2))
-
-    // reduce the force and apply it to the velocity
-    force.scale(0.2)
+    let force = new Phaser.Math.Vector2(Math.cos((11 * Math.PI) / 6), Math.sin((11 * Math.PI) / 6))
+    if (this.counter % 200 - 100 > 0) {
+      force.scale(0.3)
+    }
+    else {
+      force.scale(-0.3)
+    }
     this.velocity.add(force)
   }
 
   private applyForces(): void {
-    // apple velocity to position
     this.x += this.velocity.x
     this.y += this.velocity.y
 
-    // rotate
-    this.rotation += 0.005
-
-    // reduce the velocity
+    // this.rotation += 0.005
     this.velocity.scale(0.98)
   }
 
@@ -170,7 +140,7 @@ export class Enemy extends Phaser.GameObjects.Container {
         scene: this.scene,
         x: this.x,
         y: this.y,
-        rotation: this.rotation,
+        rotation: this.rotation - 2 * Math.PI / 6,
         texture: 'bullet',
       }),
     )

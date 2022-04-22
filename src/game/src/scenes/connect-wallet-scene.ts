@@ -40,7 +40,7 @@ export class ConnectWallet extends Phaser.Scene {
     )
     this.buttonConnectWallet.setSize(this.buttonConnectWallet.width, this.buttonConnectWallet.height)
     this.buttonConnectWallet.setInteractive({ cursor: 'pointer' })
-    this.buttonConnectWallet.on('pointerover', () => this.buttonConnectWallet.setTint(0x9887ff))
+    this.buttonConnectWallet.on('pointerover', () => this.buttonConnectWallet.setTint(0x87C5FF))
     this.buttonConnectWallet.on('pointerout', () => this.buttonConnectWallet.clearTint())
     this.buttonConnectWallet.on('pointerdown', async () => {
       this.showLoading = true

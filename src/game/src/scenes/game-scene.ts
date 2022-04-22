@@ -24,8 +24,8 @@ export class Game extends Phaser.Scene {
 
     this.player = new Tank({
       scene: this,
-      x: this.sys.canvas.width / 2,
-      y: this.sys.canvas.height / 2,
+      x: this.sys.canvas.width / 4,
+      y: this.sys.canvas.height / 4,
       tankCode: CONST.CURRENT_TANK.tankCode,
     })
 
@@ -66,7 +66,7 @@ export class Game extends Phaser.Scene {
 
     let buttonInventory = this.add.image(250, this.sys.canvas.height - 100, 'buttonInventory')
     buttonInventory.setInteractive({ cursor: 'pointer' })
-    buttonInventory.on('pointerover', () => buttonInventory.setTint(0x9887ff))
+    buttonInventory.on('pointerover', () => buttonInventory.setTint(0x87C5FF))
     buttonInventory.on('pointerout', () => buttonInventory.clearTint())
     buttonInventory.on('pointerdown', () => {
       this.enemy.destroy()
@@ -77,7 +77,7 @@ export class Game extends Phaser.Scene {
 
     let buttonBack = this.add.image(100, this.sys.canvas.height - 100, 'buttonBack')
     buttonBack.setInteractive({ cursor: 'pointer' })
-    buttonBack.on('pointerover', () => buttonBack.setTint(0x9887ff))
+    buttonBack.on('pointerover', () => buttonBack.setTint(0x87C5FF))
     buttonBack.on('pointerout', () => buttonBack.clearTint())
     buttonBack.on('pointerdown', () => {
       this.enemy.destroy()
@@ -189,18 +189,15 @@ export class Game extends Phaser.Scene {
   private spawnEnemy() {
     this.enemy = new Enemy({
       scene: this,
-      x: this.getRandomSpawnPostion(this.sys.canvas.width),
-      y: this.getRandomSpawnPostion(this.sys.canvas.height),
+      x: this.sys.canvas.width / 2 + this.getRandomSpawnPostion(this.sys.canvas.width / 2),
+      y: this.sys.canvas.height / 2 + this.getRandomSpawnPostion(this.sys.canvas.height / 2),
       tankCode: this.getRandomEnemy(),
     })
   }
 
   private getRandomEnemy(): string {
-    let turret = Phaser.Math.RND.between(0, 9)
-    let body = Phaser.Math.RND.between(0, 5)
-    let chassis = Phaser.Math.RND.between(0, 8)
-
-    return `${turret}${body}${chassis}`
+    let code = Phaser.Math.RND.between(0, 3)
+    return `${code}`
   }
 
   private getRandomSpawnPostion(aScreenSize: number): number {

@@ -62,8 +62,8 @@ export class Inventory extends Phaser.Scene {
           if (itemName.indexOf('Chassis') >= 0) targetCell = cellChassis
 
           item.on('pointerover', () => {
-            cell.setTint(0x9887ff)
-            targetCell.setTint(0x9887ff)
+            cell.setTint(0x87C5FF)
+            targetCell.setTint(0x87C5FF)
           })
           item.on('pointerout', () => {
             cell.clearTint()
@@ -120,7 +120,7 @@ export class Inventory extends Phaser.Scene {
 
     let buttonBack = this.add.image(100, this.sys.canvas.height - 100, 'buttonBack')
     buttonBack.setInteractive({ cursor: 'pointer' })
-    buttonBack.on('pointerover', () => buttonBack.setTint(0x9887ff))
+    buttonBack.on('pointerover', () => buttonBack.setTint(0x87C5FF))
     buttonBack.on('pointerout', () => buttonBack.clearTint())
     buttonBack.on('pointerdown', () => this.scene.start('Game'))
   }
