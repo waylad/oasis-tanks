@@ -10,6 +10,7 @@ export class Game extends Phaser.Scene {
   private sparkEmitter0: Phaser.GameObjects.Particles.ParticleEmitter
   private sparkEmitter1: Phaser.GameObjects.Particles.ParticleEmitter
   private drops: Drop[] = []
+  private background: Phaser.GameObjects.TileSprite
 
   constructor() {
     super({
@@ -31,13 +32,17 @@ export class Game extends Phaser.Scene {
 
     this.spawnEnemy()
 
-    this.add.tileSprite(
-      this.sys.canvas.width / 2,
-      this.sys.canvas.height / 2,
-      this.sys.canvas.width,
-      this.sys.canvas.height,
-      'background',
-    )
+    this.background = this.add.tileSprite(this.sys.canvas.width, this.sys.canvas.height, this.sys.canvas.width * 2, this.sys.canvas.height * 2, 'background')
+
+    this.tweens.add({
+      targets: this.background,
+      x: 0.01,
+      y: 0.01,
+      ease: Phaser.Math.Easing.Linear,
+      duration: 1000,
+      yoyo: false,
+      repeat: 1000000000000000,
+    })
 
     // Sparks
     this.sparkEmitter0 = this.add.particles('spark0').createEmitter({
@@ -66,7 +71,7 @@ export class Game extends Phaser.Scene {
 
     let buttonInventory = this.add.image(250, this.sys.canvas.height - 100, 'buttonInventory')
     buttonInventory.setInteractive({ cursor: 'pointer' })
-    buttonInventory.on('pointerover', () => buttonInventory.setTint(0x87C5FF))
+    buttonInventory.on('pointerover', () => buttonInventory.setTint(0x87c5ff))
     buttonInventory.on('pointerout', () => buttonInventory.clearTint())
     buttonInventory.on('pointerdown', () => {
       this.enemy.destroy()
@@ -77,7 +82,7 @@ export class Game extends Phaser.Scene {
 
     let buttonBack = this.add.image(100, this.sys.canvas.height - 100, 'buttonBack')
     buttonBack.setInteractive({ cursor: 'pointer' })
-    buttonBack.on('pointerover', () => buttonBack.setTint(0x87C5FF))
+    buttonBack.on('pointerover', () => buttonBack.setTint(0x87c5ff))
     buttonBack.on('pointerout', () => buttonBack.clearTint())
     buttonBack.on('pointerdown', () => {
       this.enemy.destroy()
@@ -88,6 +93,22 @@ export class Game extends Phaser.Scene {
   }
 
   update(time: number, delta: number): void {
+    // const counter = time % 3
+    // if (counter == 0) {
+    //   this.background.x = 100
+    //   this.background.y = 58
+    // } else if (counter == 1) {
+    //   this.background.x = 50
+    //   this.background.y = 29
+    // } else if (counter == 2) {
+    //   this.background.x = 0
+    //   this.background.y = 0
+    // } 
+    // else {
+    //   this.background.x = 0
+    //   this.background.y = 0
+    // }
+
     this.player.update(time, delta)
 
     // check collision between enemys and tank's bullets
@@ -180,7 +201,7 @@ export class Game extends Phaser.Scene {
       'itemChassis5',
       'itemChassis6',
       'itemChassis7',
-      'itemChassis8'
+      'itemChassis8',
     ]
     const random = Phaser.Math.RND.between(0, items.length)
     return items[random]
