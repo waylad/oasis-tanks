@@ -1,5 +1,7 @@
 ## Thetanks
 
+### Video demo : https://youtu.be/qd4rp2rNIJo
+
 ### Try it out now on https://thetanks.app
 
 Thetanks is a tank fighting game with upgradable NFTs. Mint a basic tank to start with. Pilot it in the game and fight enemies! Harvest their parts. Upgrade your tank. Then sell your upgraded NFT.
