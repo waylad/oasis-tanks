@@ -1,1 +1,11 @@
-{"name":"Thetank 317","description":"A Thetank Upgradable Tank","external_url":"https://thetanks.app/assets/tanks/317.svg","image":"https://thetanks.app/assets/tanks/317.svg","attributes":[{"turret":3,"rarity":0.1},{"body":1,"rarity":0.2},{"chassis":7,"rarity":0.1}]}
+{
+  "name": "OasisTank 317",
+  "description": "A OasisTank Upgradable Tank",
+  "external_url": "https://oasistanks.io/assets/tanks/317.svg",
+  "image": "https://oasistanks.io/assets/tanks/317.svg",
+  "attributes": [
+    { "turret": 3, "rarity": 0.1 },
+    { "body": 1, "rarity": 0.2 },
+    { "chassis": 7, "rarity": 0.1 }
+  ]
+}

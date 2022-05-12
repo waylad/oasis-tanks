@@ -56,7 +56,7 @@ export class PreloaderScene extends Phaser.Scene {
     // }
     this.load.image('background', './assets/bg.png')
     this.load.image('titleLoading', './assets/title-loading.png')
-    this.load.image('titleHome', './assets/title-home.png')
+    this.load.image('titleHome', './assets/title-home-text.png')
     this.load.image('buttonConnectWallet', './assets/button-connect-wallet.png')
     this.load.image('buttonLoading', './assets/button-loading.png')
     this.load.image('titleGameOver', './assets/title-game-over.png')

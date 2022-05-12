@@ -2,9 +2,9 @@ import type { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signe
 import { artifacts, ethers, waffle } from "hardhat";
 import type { Artifact } from "hardhat/types";
 
-import type { Thetanks } from "../../src/types/contracts/Thetanks";
+import type { Oasistanks } from "../../src/types/contracts/Oasistanks";
 import { Signers } from "../types";
-import { shouldBehaveLikeThetanks } from "./Thetanks.behavior";
+import { shouldBehaveLikeOasistanks } from "./Oasistanks.behavior";
 
 describe("Unit tests", function () {
   before(async function () {
@@ -17,12 +17,12 @@ describe("Unit tests", function () {
 
   });
 
-  describe("Thetanks", function () {
+  describe("Oasistanks", function () {
     beforeEach(async function () {
-      const thetanksArtifact: Artifact = await artifacts.readArtifact("Thetanks");
-      this.thetanks = <Thetanks>await waffle.deployContract(this.signers.admin, thetanksArtifact, ['THETANKS', 'THETANKS']);
+      const oasistanksArtifact: Artifact = await artifacts.readArtifact("Oasistanks");
+      this.oasistanks = <Oasistanks>await waffle.deployContract(this.signers.admin, oasistanksArtifact, ['OASISTANKS', 'OASISTANKS']);
     });
 
-    shouldBehaveLikeThetanks();
+    shouldBehaveLikeOasistanks();
   });
 });

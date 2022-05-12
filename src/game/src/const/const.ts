@@ -4,7 +4,7 @@ export type TankToken = {
 }
 
 export type CONST_TYPE = {
-  THETANKS_CONTRACT: string,
+  OASISTANKS_CONTRACT: string,
   USER_TANKS: TankToken[],
   CURRENT_TANK: TankToken | undefined,
   INVENTORY: string[],
@@ -13,7 +13,7 @@ export type CONST_TYPE = {
 }
 
 export let CONST: CONST_TYPE = {
-  THETANKS_CONTRACT: '0xd4F41e807db3fc1dB431ED5f90D7331cf3b1524D',
+  OASISTANKS_CONTRACT: '0xd4F41e807db3fc1dB431ED5f90D7331cf3b1524D',
   USER_TANKS: [],
   CURRENT_TANK: undefined,
   INVENTORY: [],

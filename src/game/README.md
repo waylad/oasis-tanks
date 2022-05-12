@@ -1,4 +1,4 @@
-# Phaser game for Thetanks
+# Phaser game for Oasistanks
 
 To start the game:
 

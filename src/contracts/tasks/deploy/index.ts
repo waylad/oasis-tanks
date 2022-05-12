@@ -1,1 +1,1 @@
-import "./thetanks";
+import "./oasistanks";

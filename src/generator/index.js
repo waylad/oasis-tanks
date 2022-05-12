@@ -44,10 +44,10 @@ function createImage(turret, body, chassis) {
     .replace('<!-- turret -->', getLayer(`turret${turret}`))
 
   const meta = {
-    name: `Thetank ${turret}${body}${chassis}`,
-    description: 'A Thetank Upgradable Tank',
-    external_url: `https://thetanks.app/assets/tanks/${turret}${body}${chassis}.svg`,
-    image: `https://thetanks.app/assets/tanks/${turret}${body}${chassis}.svg`,
+    name: `OasisTank ${turret}${body}${chassis}`,
+    description: 'A OasisTank Upgradable Tank',
+    external_url: `https://oasistanks.io/assets/tanks/${turret}${body}${chassis}.svg`,
+    image: `https://oasistanks.io/assets/tanks/${turret}${body}${chassis}.svg`,
     attributes: [
       {
         turret,

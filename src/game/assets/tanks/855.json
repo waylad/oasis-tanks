@@ -1,1 +1,11 @@
-{"name":"Thetank 855","description":"A Thetank Upgradable Tank","external_url":"https://thetanks.app/assets/tanks/855.svg","image":"https://thetanks.app/assets/tanks/855.svg","attributes":[{"turret":8,"rarity":0.1},{"body":5,"rarity":0.2},{"chassis":5,"rarity":0.1}]}
+{
+  "name": "OasisTank 855",
+  "description": "A OasisTank Upgradable Tank",
+  "external_url": "https://oasistanks.io/assets/tanks/855.svg",
+  "image": "https://oasistanks.io/assets/tanks/855.svg",
+  "attributes": [
+    { "turret": 8, "rarity": 0.1 },
+    { "body": 5, "rarity": 0.2 },
+    { "chassis": 5, "rarity": 0.1 }
+  ]
+}

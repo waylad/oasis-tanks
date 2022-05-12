@@ -37,7 +37,7 @@ const chainIds = {
   "polygon-mumbai": 80001,
   rinkeby: 4,
   "meter-testnet": 83,
-  "theta-testnet": 365
+  "oasis-testnet": 365
 };
 
 function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
@@ -52,8 +52,8 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
     case "meter-testnet":
       jsonRpcUrl = "https://rpctest.meter.io";
       break;
-    case "theta-testnet":
-      jsonRpcUrl = "https://eth-rpc-api-testnet.thetatoken.org/rpc";
+    case "oasis-testnet":
+      jsonRpcUrl = "https://eth-rpc-api-testnet.oasistoken.org/rpc";
       break;
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
@@ -108,7 +108,7 @@ const config: HardhatUserConfig = {
     arbitrum: getChainConfig("arbitrum-mainnet"),
     avalanche: getChainConfig("avalanche"),
     "meter-testnet": getChainConfig("meter-testnet"),
-    "theta-testnet": getChainConfig("theta-testnet"),
+    "oasis-testnet": getChainConfig("oasis-testnet"),
     bsc: getChainConfig("bsc"),
     mainnet: getChainConfig("mainnet"),
     optimism: getChainConfig("optimism-mainnet"),

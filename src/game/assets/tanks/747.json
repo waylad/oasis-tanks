@@ -1,1 +1,11 @@
-{"name":"Thetank 747","description":"A Thetank Upgradable Tank","external_url":"https://thetanks.app/assets/tanks/747.svg","image":"https://thetanks.app/assets/tanks/747.svg","attributes":[{"turret":7,"rarity":0.1},{"body":4,"rarity":0.2},{"chassis":7,"rarity":0.1}]}
+{
+  "name": "OasisTank 747",
+  "description": "A OasisTank Upgradable Tank",
+  "external_url": "https://oasistanks.io/assets/tanks/747.svg",
+  "image": "https://oasistanks.io/assets/tanks/747.svg",
+  "attributes": [
+    { "turret": 7, "rarity": 0.1 },
+    { "body": 4, "rarity": 0.2 },
+    { "chassis": 7, "rarity": 0.1 }
+  ]
+}

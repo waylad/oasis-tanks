@@ -1,5 +1,5 @@
 {
-  "name": "thetanks-game",
+  "name": "oasistanks-game",
   "version": "1.0.0",
   "description": "Space shooter with upgradeable NFTs",
   "keywords": [],
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waylad/thetanks.git"
+    "url": "git+https://github.com/waylad/oasistanks.git"
   },
   "author": {
     "name": "waylad",
@@ -42,7 +42,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waylad/thetanks/issues"
+    "url": "https://github.com/waylad/oasistanks/issues"
   },
-  "homepage": "https://github.com/waylad/thetanks"
+  "homepage": "https://github.com/waylad/oasistanks"
 }

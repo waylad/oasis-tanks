@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import { CONST, TankToken } from '../const/const'
-const thetanksAbi = require('./abi/Thetanks.json')
+const oasistanksAbi = require('./abi/Oasistanks.json')
 
 declare var window: any
 let provider: ethers.providers.Web3Provider
@@ -18,14 +18,14 @@ export const connectWallet = async () => {
     params: [
       {
         chainId: '0x16d',
-        rpcUrls: ['https://eth-rpc-api-testnet.thetatoken.org/rpc'],
-        chainName: 'Theta Testnet',
+        rpcUrls: ['https://eth-rpc-api-testnet.oasistoken.org/rpc'],
+        chainName: 'Oasis Testnet',
         nativeCurrency: {
           name: 'TFUEL',
           symbol: 'TFUEL',
           decimals: 18,
         },
-        blockExplorerUrls: ['https://testnet-explorer.thetatoken.org/'],
+        blockExplorerUrls: ['https://testnet-explorer.oasistoken.org/'],
       },
     ],
   })
@@ -33,7 +33,7 @@ export const connectWallet = async () => {
   signer = provider.getSigner()
   address = await signer.getAddress()
 
-  const contract = new ethers.Contract(CONST.THETANKS_CONTRACT, thetanksAbi, provider)
+  const contract = new ethers.Contract(CONST.OASISTANKS_CONTRACT, oasistanksAbi, provider)
   contractWithSigner = contract.connect(signer)
 
   console.log(address)

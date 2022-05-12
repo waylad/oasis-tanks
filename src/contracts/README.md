@@ -1,4 +1,4 @@
-# Solidity Contracts for Thetank
+# Solidity Contracts for OasisTank
 
 Edit `.env` with your seed phrase then:
 
