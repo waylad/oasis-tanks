@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waylad/oasistanks.git"
+    "url": "git+https://github.com/waylad/oasis-tanks.git"
   },
   "author": {
     "name": "waylad",
@@ -42,7 +42,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waylad/oasistanks/issues"
+    "url": "https://github.com/waylad/oasis-tanks/issues"
   },
-  "homepage": "https://github.com/waylad/oasistanks"
+  "homepage": "https://github.com/waylad/oasis-tanks"
 }

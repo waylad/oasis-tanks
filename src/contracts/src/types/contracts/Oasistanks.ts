@@ -26,7 +26,7 @@ import type {
   OnEvent,
 } from "../common";
 
-export interface ThetanksInterface extends utils.Interface {
+export interface OasistanksInterface extends utils.Interface {
   functions: {
     "_ownedTokens(address,uint256)": FunctionFragment;
     "_tokenToTankCode(uint256)": FunctionFragment;
@@ -237,12 +237,12 @@ export type TransferEvent = TypedEvent<
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
-export interface Thetanks extends BaseContract {
+export interface Oasistanks extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: ThetanksInterface;
+  interface: OasistanksInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,

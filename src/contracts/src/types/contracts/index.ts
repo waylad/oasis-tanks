@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Oasistanks } from "./Oasistanks";
+export type { Thetanks } from "./Thetanks";

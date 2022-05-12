@@ -8,7 +8,7 @@ import { SelectTank } from './scenes/select-tank-scene';
 
 export const GameConfig: Phaser.Types.Core.GameConfig = {
   title: 'Oasistanks',
-  url: 'https://github.com/waylad/oasistanks',
+  url: 'https://github.com/waylad/oasis-tanks',
   version: '2.0',
   width: 1600,
   height: 800,

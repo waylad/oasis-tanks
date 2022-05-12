@@ -37,7 +37,7 @@ const chainIds = {
   "polygon-mumbai": 80001,
   rinkeby: 4,
   "meter-testnet": 83,
-  "oasis-testnet": 365
+  "oasis-testnet": 42261
 };
 
 function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
@@ -53,7 +53,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
       jsonRpcUrl = "https://rpctest.meter.io";
       break;
     case "oasis-testnet":
-      jsonRpcUrl = "https://eth-rpc-api-testnet.oasistoken.org/rpc";
+      jsonRpcUrl = "https://testnet.emerald.oasis.dev";
       break;
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
