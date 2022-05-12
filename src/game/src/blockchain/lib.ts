@@ -17,15 +17,15 @@ export const connectWallet = async () => {
     method: 'wallet_addEthereumChain',
     params: [
       {
-        chainId: '0x16d',
-        rpcUrls: ['https://eth-rpc-api-testnet.oasistoken.org/rpc'],
+        chainId: '0xa515',
+        rpcUrls: ['https://testnet.emerald.oasis.dev'],
         chainName: 'Oasis Testnet',
         nativeCurrency: {
-          name: 'TFUEL',
-          symbol: 'TFUEL',
+          name: 'TEST',
+          symbol: 'TEST',
           decimals: 18,
         },
-        blockExplorerUrls: ['https://testnet-explorer.oasistoken.org/'],
+        blockExplorerUrls: ['https://testnet.explorer.emerald.oasis.dev'],
       },
     ],
   })
