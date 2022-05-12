@@ -1,10 +1,10 @@
 ## Oasistanks
 
-### Video demo : https://youtu.be/qd4rp2rNIJo
+### Video demo : https://www.youtube.com/playlist?list=PLAjZcLA2E50jiQfP67_DPaC26DfYhfRQH
 
 ### Try it out now on https://oasistanks.io
 
-Oasistanks is a tank fighting game with upgradable NFTs. Mint a basic tank to start with. Pilot it in the game and fight enemies! Harvest their parts. Upgrade your tank. Then sell your upgraded NFT.
+Oasis Tanks is a tank fighting game with upgradable NFTs. Mint a basic tank to start with. Pilot it in the game and fight enemies! Harvest their parts. Upgrade your tank. Then sell your upgraded NFT.
 ![](https://oasistanks.io/assets/screenshots/present-model.png)
 
 First, click "connect your wallet". Metamask opens to authorize the connection. If you are not already connected to the Oasis Testnet, Metamask will offer you to do so.
