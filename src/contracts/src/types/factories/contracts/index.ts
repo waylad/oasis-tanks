@@ -2,4 +2,3 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Oasistanks__factory } from "./Oasistanks__factory";
-export { Thetanks__factory } from "./Thetanks__factory";

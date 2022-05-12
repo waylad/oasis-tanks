@@ -22,5 +22,3 @@ export type { IERC165 } from "./@openzeppelin/contracts/utils/introspection/IERC
 export { IERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/IERC165__factory";
 export type { Oasistanks } from "./contracts/Oasistanks";
 export { Oasistanks__factory } from "./factories/contracts/Oasistanks__factory";
-export type { Thetanks } from "./contracts/Thetanks";
-export { Thetanks__factory } from "./factories/contracts/Thetanks__factory";
