@@ -1,6 +1,6 @@
 ## Oasistanks
 
-### Video demo : https://www.youtube.com/playlist?list=PLAjZcLA2E50jiQfP67_DPaC26DfYhfRQH
+### Video demo : https://www.youtube.com/watch?v=8KsU3B5G8bc
 
 ### Try it out now on https://oasistanks.io
 
